@@ -7,14 +7,15 @@ const app = require('electron').remote.app
 var SQL = require('sql.js');
 window.$ = window.jQuery = require('jquery')
 
-let htmlPath = path.join(app.getAppPath(), 'app')
-let webRoot = path.dirname(__dirname)
-var filebuffer = fs.readFileSync(path.join(webRoot, 'app/sql/cities_and_regions'), 'utf8');
+let absoletePath = path.join(app.getAppPath(), 'app')
 
+// Coment this line to use database
+window.cities = require(path.join(absoletePath,'citiesOfRussia.json'));
 
-window.cities = require(path.join(htmlPath,'cities.json'));
-
+// connect Database if no json
 if (typeof window.cities === "undefined") {
+    let relativePath = path.dirname(__dirname)
+    var filebuffer = fs.readFileSync(path.join(relativePath, 'app/sql/cities_and_regions'), 'utf8');
     // Load the db
     var db = new SQL.Database(filebuffer);
     // load cities and regions from Database
