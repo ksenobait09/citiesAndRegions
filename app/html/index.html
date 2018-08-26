@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Города и Регионы</title>
+    <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+  </head>
+  <body>
+    <header id="header" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <div class="col-2 navbar-brand">
+            Города и Регионы
+        </div>
+    </header>
+      <div class="columns">
+          <div>
+              <p>
+              <textarea class="form-control" cols="70" rows="7" id="input" placeholder="Названия городов"></textarea>
+              <small> Введите названия городов, разделенные запятой или переносом строки
+              </small>
+              <br>
+              <button class="btn btn-primary" id="process">Отсортировать по регионам</button>
+          </div>
+          <div>
+              <table id="result" class="table table-hover">
+                  <thead>
+                      <tr class="table-primary">
+                          <td> 
+                              Регион
+                          </td>
+                          <td>
+                              Город
+                          </td>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+              </table>
+          </div>
+    </div>
+    <script>
+      // You can also require other files to run in this process
+      require('../renderer.js')
+      require('../view.js')
+    </script>
+  </body>
+</html>

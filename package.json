@@ -1,22 +1,44 @@
 {
-  "name": "electron-quick-start",
+  "name": "cities_and_regions",
+  "productName": "Cities and Regions App",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A minimal Electron application for sorting cities by regions",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist-linux": "electron-builder",
+    "dist-mac": "electron-builder -m",
+    "dist-win": "electron-builder -w",
+    "postinstall": "electron-builder install-app-deps",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=build/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . cities_and_regions-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=build/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Cities and Regions App\""
   },
   "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+  "files": [
+    "app/*",
+    "build/*"
   ],
-  "author": "GitHub",
+  "author": "Ksenobait",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^2.0.0"
+    "ajv": "^6.5.3",
+    "electron": "^2.0.0",
+    "electron-builder": "^20.28.2"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "path": "^0.12.7",
+    "sql.js": "^0.5.0"
+  },
+  "build": {
+    "appId": "ru.ksenobait.cities_and_regions",
+    "mac": {
+      "category": "public.app-category.other",
+      "target": "tar.gz"
+    },
+    "directories": {
+      "output": "dist/installers/"
+    }
   }
 }
